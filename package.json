@@ -1,0 +1,10 @@
+{
+    "name": "Coin Toss",
+    "version": "0.0.1",
+    "description": "Two-person coin toss app using socket.io ",
+    "dependencies": {
+        "socket.io": "latest",
+        "moniker": "latest"
+    },
+    "author": "Kevin Chandler, http://imkev.in"
+}

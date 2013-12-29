@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <script src='//code.jquery.com/jquery-1.7.2.min.js'></script>
+        <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'></script>
+        <script src='/socket.io/socket.io.js'></script>
+        
+        <script>
+        $(document).ready(function() {
+            $('button').on('click', function() {
+               var toss = Math.floor((Math.random()*10)+1);
+               if (toss <=5) {
+                    var result = 'Tails';
+                }
+                else {
+                    var result = 'Heads';
+                }
+               $('.result').html(result);
+            })
+        })
+            var socket = io.connect('http://localhost');
+
+            socket.on('play', function(data) {
+            	if (data.result <=5) {
+            		var result = 'Tails';
+            	}
+            	else {
+            		var result = 'Heads';
+            	}
+                $('.result').html('The winner is: ' + result + '!');
+            });
+
+            socket.on('waiting', function(data) {
+            	$('.result').html(data.reason);
+            })
+
+            socket.on('check', function(data) {
+                $('p.connectedUsers').text(data.users) //lists # of connected users
+            })
+
+            socket.on('error', function() { console.error(arguments) });
+            socket.on('message', function() { console.log(arguments) });
+        </script>
+
+
+        
+      <style>
+    
+            body {
+                margin-top: 10em;
+                margin-left: 10em;
+                background: #aaa;
+                font: 2em helvetica serif;
+                color: #fff;
+            }
+            .btn-sm {
+                margin-top: 10em;
+            }
+
+            p.connectedUsers {
+                position: absolute;
+                bottom: 0;
+                right: 10em;
+            }
+        </style>
+
+    </head>
+
+
+    
+    <body>
+        <h3 class='result'></h3>
+
+        <p class='connectedUsers'></p>
+
+        <hr>
+        <h3 class='lead'>If you don't want to wait for someone.. </h3>
+        <button class='btn-lg btn-primary' style='position'>Flip now!</button>  
+    </body>
+</html>
