@@ -1,5 +1,5 @@
 {
-    "name": "Coin Toss",
+    "name": "Coin-Toss",
     "version": "0.0.1",
     "description": "Two-person coin toss app using socket.io ",
     "dependencies": {
