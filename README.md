@@ -7,4 +7,4 @@ Must have <a href='http://nodejs.org'>Nodejs</a> installed
 
 1. Run npm install
 2. node app.js
-2. Browse to localhost:3000
+2. Browse to localhost:3000 (You will need to open the port to use it outside of your local network)
