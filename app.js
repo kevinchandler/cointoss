@@ -27,7 +27,7 @@ function checkUsers() {
 	
 }
 
-// check connected users every 5 secs
+// check connected users every 3 secs
 
 setInterval(checkUsers, 3000);
 
@@ -39,5 +39,7 @@ io.sockets.on('connection', function(socket) {
 	toss = Math.floor((Math.random()*10)+1);
 });
 
-app.listen(3000);
+app.listen(3000), function() {
+	console.log('listening on port 3000');
+};
 
